@@ -4,6 +4,15 @@
 <div>Name: {{hero.name}}</div>
 
 <div>
+  <p>Data binding</p>
   <label for="name">Hero name: </label>
   <input id="name" [(ngModel)]="hero.name" placeholder="name">
 </div>
+
+<h2>My Heroes</h2>
+<ul class="heroes">
+  <li *ngFor="let heroOne of heroes">
+    <span class="badge">{{heroOne.id}}</span> {{heroOne.name}}
+  </li>
+</ul>
+
