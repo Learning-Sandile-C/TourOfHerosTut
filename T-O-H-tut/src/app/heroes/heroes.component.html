@@ -1,18 +1,22 @@
-<h1>Details {{hero.name | uppercase}}</h1>
-
-<div>Id: {{hero.id}}</div>
-<div>Name: {{hero.name}}</div>
-
 <div>
-  <p>Data binding</p>
-  <label for="name">Hero name: </label>
+  <label for="name">Hero name(Data binding): </label>
   <input id="name" [(ngModel)]="hero.name" placeholder="name">
 </div>
 
 <h2>My Heroes</h2>
 <ul class="heroes">
-  <li *ngFor="let heroOne of heroes">
-    <span class="badge">{{heroOne.id}}</span> {{heroOne.name}}
+  <li *ngFor="let hero of heroes"
+    [class.selected]="hero === selectedHero"
+    (click)="onSelect(hero)">
+    <span class="badge">{{hero.id}}</span> {{hero.name}}
   </li>
 </ul>
 
+<div *ngIf="selectedHero">
+  <h2>{{selectedHero.name | uppercase}} Details</h2>
+  <div><span>id: </span>{{selectedHero.id}}</div>
+  <div>
+    <label for="hero-name">Hero name: </label>
+    <input id="hero-name" [(ngModel)]="selectedHero.name" placeholder="name">
+  </div>
+</div>
