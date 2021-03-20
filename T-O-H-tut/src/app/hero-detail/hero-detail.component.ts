@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Hero } from '../Hero';
 
 @Component({
   selector: 'app-hero-detail',
@@ -11,5 +12,12 @@ export class HeroDetailComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  selectedHero?: Hero;
+  onSelect(hero: Hero): void {
+    this.selectedHero = hero;
+  }
+
+  @Input() hero?: Hero;//@Input was imported
 
 }
