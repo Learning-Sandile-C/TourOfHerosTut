@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Injectable } from '@angular/core';
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-messages',
@@ -9,9 +10,9 @@ import { Injectable } from '@angular/core';
 export class MessagesComponent implements OnInit {
   messages: string[] = [];
 
-  constructor() { }
+  constructor(public messageService: MessageService) { }
 
-  ngOnInit(): void {}
-
+  ngOnInit(): void {
+  }
 
 }
