@@ -1,9 +1,13 @@
 <h1>{{title}}</h1>
 <nav>
-  <a routerLink="/heroes">Heroes</a>
+<ul style="width:10%; float:left;">
+  <li><a routerLink="/heroes">Heroes</a></li>
+</ul>
+
+<ul style="width:10%; float:left;">
+  <li><a routerLink="/">Home</a></li>
+</ul>
 </nav>
-<nav>
-  <a routerLink="/">Home</a>
-</nav>
+
 <router-outlet></router-outlet>
 <app-messages></app-messages>
