@@ -1,23 +1,41 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 import { Hero } from '../Hero';
+import { HeroService } from '../hero.service';
 
 @Component({
   selector: 'app-hero-detail',
   templateUrl: './hero-detail.component.html',
-  styleUrls: ['./hero-detail.component.css']
+  styleUrls: [ './hero-detail.component.css' ]
 })
 export class HeroDetailComponent implements OnInit {
+  hero: Hero;
 
-  constructor() { }
+  // makes: any[] = [];
+
+  // constructor(private makeService: MakeService) {
+  //    // Initialization inside the constructor
+  //    this.makes = [];
+  // }
+
+  constructor(
+    private route: ActivatedRoute,
+    private heroService: HeroService,
+    private location: Location,
+  ) {}
 
   ngOnInit(): void {
+    this.getHero();
   }
 
-  selectedHero?: Hero;
-  onSelect(hero: Hero): void {
-    this.selectedHero = hero;
+  getHero(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.heroService.getHero(id)
+      .subscribe(hero => this.hero = hero);
   }
 
-  @Input() hero?: Hero;//@Input was imported
-
+  goBack(): void {
+    this.location.back();
+  }
 }
