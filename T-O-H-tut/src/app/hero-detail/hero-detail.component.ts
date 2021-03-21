@@ -10,14 +10,7 @@ import { HeroService } from '../hero.service';
   styleUrls: [ './hero-detail.component.css' ]
 })
 export class HeroDetailComponent implements OnInit {
-  hero: Hero;
-
-  // makes: any[] = [];
-
-  // constructor(private makeService: MakeService) {
-  //    // Initialization inside the constructor
-  //    this.makes = [];
-  // }
+  hero?: Hero;
 
   constructor(
     private route: ActivatedRoute,
@@ -30,7 +23,8 @@ export class HeroDetailComponent implements OnInit {
   }
 
   getHero(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
+    // const id = +this.route.snapshot.paramMap.get('id');
+    const id = +this.route.snapshot.paramMap.getAll('id');
     this.heroService.getHero(id)
       .subscribe(hero => this.hero = hero);
   }
